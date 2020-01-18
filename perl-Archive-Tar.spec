@@ -1,6 +1,6 @@
 Name:           perl-Archive-Tar
 Version:        1.92
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A module for Perl manipulation of .tar files
 Group:          Development/Libraries
 License:        GPL+ or Artistic
@@ -74,6 +74,9 @@ make test
 
 
 %changelog
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 1.92-2
+- Mass rebuild 2013-12-27
+
 * Thu Jun 20 2013 Jitka Plesnikova <jplesnik@redhat.com> - 1.92-1
 - 1.92 bump
 - Use DESTDIR rather than PERL_INSTALL_ROOT
