@@ -1,11 +1,13 @@
 Name:           perl-Archive-Tar
 Version:        1.92
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A module for Perl manipulation of .tar files
 Group:          Development/Libraries
 License:        GPL+ or Artistic
 URL:            http://search.cpan.org/dist/Archive-Tar/
 Source0:        http://www.cpan.org/authors/id/B/BI/BINGOS/Archive-Tar-%{version}.tar.gz
+# Directory traversal in Archive::Tar, CVE-2018-12015, CPAN RT#125523
+Patch0:         Archive-Tar-2.28-Fixed-CVE-2018-12015.patch
 BuildArch:      noarch
 # Most of the BRS are needed only for tests, compression support at run-time
 # is optional soft dependency.
@@ -52,6 +54,7 @@ will also support compressed or gzipped tar files.
 
 %prep
 %setup -q -n Archive-Tar-%{version}
+%patch0 -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -74,6 +77,9 @@ make test
 
 
 %changelog
+* Thu Jan 17 2019 Jitka Plesnikova <jplesnik@redhat.com> - 1.92-3
+- CVE-2018-12015 - Directory traversal in Archive::Tar (bug #1592803)
+
 * Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 1.92-2
 - Mass rebuild 2013-12-27
 
